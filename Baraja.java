@@ -1,6 +1,0 @@
-/**
- * Baraja
- */
-public class Baraja {
-
-}
