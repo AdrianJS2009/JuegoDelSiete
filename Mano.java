@@ -1,6 +1,0 @@
-/**
- * Mano
- */
-public class Mano {
-
-}
