@@ -1,0 +1,6 @@
+/**
+ * Baraja
+ */
+public class Baraja {
+
+}

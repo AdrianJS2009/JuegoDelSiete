@@ -1,0 +1,6 @@
+/**
+ * Carta
+ */
+public class Carta {
+
+}
