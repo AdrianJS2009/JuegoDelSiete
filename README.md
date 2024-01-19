@@ -15,6 +15,7 @@ turno de la banca.
 jugador y de calcular la puntuación de la mano del jugador
 
 Giovanni:
+
 ● Carta: gestiona el palo y número asignado y también un método que te
 diga la puntuación de esa carta.
 
