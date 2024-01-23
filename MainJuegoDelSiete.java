@@ -45,6 +45,8 @@ public class MainJuegoDelSiete {
         }
       }
 
+      // TODO: Turno de la banca --GIOVANNI--
+
     }
   }
 }

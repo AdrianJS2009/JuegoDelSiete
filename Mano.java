@@ -7,15 +7,18 @@ import java.util.Arrays;
  * @author Adrián Jiménez Santiago
  */
 class Mano {
+
+  // ATRIBUTOS
   private Carta[] cartas; // TODO: Según el array de Gio..
   private int numCartas;
 
+  // CONSTRUCTOR
   public Mano() {
     cartas = new Carta[10]; // Como mucho en una mano hay 10 cartas.
     numCartas = 0;
   }
 
-  // Métodos
+  // MÉTODOS
 
   public void recibirCarta(Carta carta) {
     if (numCartas < 10) {
@@ -36,7 +39,7 @@ class Mano {
     numCartas = 0;
   }
 
-  // Getters
+  // GETTERS
   public Carta[] getCartas() {
     return Arrays.copyOf(cartas, numCartas); // Utilizando copyOf hacemos una copia exacta del array de cartas junto con
                                              // su número, si Gio la lia con el array, modificaré el método

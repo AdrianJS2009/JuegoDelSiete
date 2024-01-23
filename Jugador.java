@@ -8,18 +8,19 @@
 
 class Jugador {
 
-  // Attributos
+  // ATRIBUTOS
   private Mano mano;
   private double saldo;
   private double apuesta;
 
+  // CONSTRUCTOR
   public Jugador(double saldoInicial) {
     mano = new Mano();
     saldo = saldoInicial;
     apuesta = 0;
   }
 
-  // Métodos
+  // MÉTODOS
   public void recibirCarta(Carta carta) {
     mano.recibirCarta(carta);
   }
