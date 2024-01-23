@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author Adrián Jiménez Santiago
  */
 class Mano {
-  private Carta[] cartas;
+  private Carta[] cartas; // TODO: Según el array de Gio..
   private int numCartas;
 
   public Mano() {
@@ -38,7 +38,7 @@ class Mano {
   // Getters
   public Carta[] getCartas() {
     return Arrays.copyOf(cartas, numCartas); // Utilizando copyOf hacemos una copia exacta del array de cartas junto con
-                                             // su número
+                                             // su número, si Gio la lia con el array, modificaré el método
   }
 
 }
