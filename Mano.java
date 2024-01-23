@@ -1,7 +1,8 @@
 import java.util.Arrays;
 
 /**
- * Explica tu código aquí
+ * Clase Mano que contiene un array de cartas, además, contiene las funciones de
+ * recibir cartas, calcular los puntos de la mano y reiniciar la mano entera.
  * 
  * @author Adrián Jiménez Santiago
  */

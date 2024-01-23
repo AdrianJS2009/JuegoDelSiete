@@ -1,5 +1,7 @@
 /**
- * Explica tu código aquí
+ * Código de la clase Jugador, que contiene las funciones de recibir una carta,
+ * realizar apuestas y modificar su saldo solo para incrementarlo, además, es
+ * capaz de reiniciar su mano.
  * 
  * @author Adrián Jiménez Santiago
  */
