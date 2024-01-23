@@ -14,6 +14,8 @@ class Mano {
     numCartas = 0;
   }
 
+  // Métodos
+
   public void recibirCarta(Carta carta) {
     if (numCartas < 10) {
       cartas[numCartas++] = carta;
@@ -28,13 +30,15 @@ class Mano {
     return puntuacion;
   }
 
+  public void reiniciar() { // Reiniciamos la mano
+    cartas = new Carta[10];
+    numCartas = 0;
+  }
+
+  // Getters
   public Carta[] getCartas() {
     return Arrays.copyOf(cartas, numCartas); // Utilizando copyOf hacemos una copia exacta del array de cartas junto con
                                              // su número
   }
 
-  public void reiniciar() { // Reiniciamos la mano
-    cartas = new Carta[10];
-    numCartas = 0;
-  }
 }
