@@ -1,17 +1,17 @@
 /**
- * Clase Jugador que se encarga de la logica de las apuestas y cartas.
+ * Clase de Jugador
  * 
  * @author Adrián Jiménez Santiago
  */
 
-public class Jugador {
+class Jugador {
   private Carta[] mano;
   private int contadorCartas;
   private double saldo;
   private double apuesta;
 
   public Jugador(double saldoInicial) {
-    mano = new Carta[40]; // Un tamaño suficientemente grande para evitar quedarse sin espacio
+    mano = new Carta[40];
     contadorCartas = 0;
     saldo = saldoInicial;
   }
@@ -45,7 +45,7 @@ public class Jugador {
   }
 
   public void perderApuesta() {
-
+    saldo -= apuesta; // El jugador pierde su apuesta
   }
 
   public void resetearMano() {
@@ -56,20 +56,12 @@ public class Jugador {
     return saldo;
   }
 
-  public void setSaldo(double saldo) {
-    this.saldo = saldo;
-  }
-
   public void incrementarSaldo(double monto) {
     saldo += monto;
   }
 
   public double getApuesta() {
     return apuesta;
-  }
-
-  public void setApuesta(double apuesta) {
-    this.apuesta = apuesta;
   }
 
   public void mostrarMano() {
