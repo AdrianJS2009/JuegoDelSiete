@@ -2,7 +2,7 @@
  * Clase Carta
  * 
  * @author Giovanni Giove
-*/
+ */
 class Carta {
     private String palo;
     private String valor;
@@ -28,10 +28,11 @@ class Carta {
                 return 0.5;
             default:
                 System.out.println("Valor de carta desconocido: " + valor);
-                return 0;
+                return 0.0;
         }
     }
 
+    
     @Override
     public String toString() {
         return valor + " de " + palo;
