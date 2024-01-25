@@ -5,16 +5,23 @@
  */
 
 class Jugador {
+
+  // Atributos
+
   private Carta[] mano;
   private int contadorCartas;
   private double saldo;
   private double apuesta;
 
+  // Constructor
+
   public Jugador(double saldoInicial) {
-    mano = new Carta[40];
+    mano = new Carta[40]; // 40 para asegurarme de que nunca nos quedamos cortos.
     contadorCartas = 0;
     saldo = saldoInicial;
   }
+
+  // Métodos
 
   public void recibirCarta(Carta carta) {
     if (contadorCartas < mano.length) {
@@ -35,17 +42,17 @@ class Jugador {
       apuesta = cantidad;
       saldo -= cantidad;
     } else {
-      System.out.println("Apuesta no válida. No tienes suficiente saldo.");
+      System.out.println("Apuesta no válida. No tienes suficientes creditos.");
       apuesta = 0;
     }
   }
 
   public void ganarApuesta() {
-    saldo += apuesta * 2; // El jugador recupera su apuesta y gana una cantidad igual
+    saldo += apuesta * 2;
   }
 
   public void perderApuesta() {
-    saldo -= apuesta; // El jugador pierde su apuesta
+    saldo -= apuesta;
   }
 
   public void resetearMano() {

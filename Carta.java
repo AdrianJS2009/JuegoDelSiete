@@ -4,9 +4,12 @@
  * @author Giovanni Giove
  */
 class Carta {
+
+    // Atributos
     private String palo;
     private String valor;
 
+    // Constructor
     public Carta(String palo, String valor) {
         this.palo = palo;
         this.valor = valor;
@@ -27,12 +30,11 @@ class Carta {
             case "Rey":
                 return 0.5;
             default:
-                System.out.println("Valor de carta desconocido: " + valor);
+                System.out.println("El valor de la carta es desconocido: " + valor);
                 return 0.0;
         }
     }
 
-    
     @Override
     public String toString() {
         return valor + " de " + palo;

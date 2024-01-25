@@ -1,3 +1,4 @@
+
 /**
  * Explica tu código aquí
  * 
@@ -5,11 +6,15 @@
 */
 
 import java.util.Random;
-import java.util.Scanner;
 
 class Baraja {
+
+    // Atributos
+
     private Carta[] cartas;
     private int index;
+
+    // Constructor
 
     public Baraja() {
         cartas = new Carta[40];
@@ -27,6 +32,8 @@ class Baraja {
         }
     }
 
+    // Métodos
+
     public void barajar() {
         Random rand = new Random();
         for (int i = cartas.length - 1; i > 0; i--) {
@@ -43,7 +50,8 @@ class Baraja {
         if (index < cartas.length) {
             return cartas[index++];
         } else {
-            System.out.println("No quedan cartas en la baraja.");
+            System.out.println("No quedan cartas en la baraja."); // No deberia de ocurrir ya que tenemos un máximo de
+                                                                  // 40 cartas
             return null;
         }
     }
