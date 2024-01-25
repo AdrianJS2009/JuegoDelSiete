@@ -1,11 +1,3 @@
-
-/** 
- * Main del juego, hecho por ambos.
- * 
-* @author Adrián Jiménez Santiago
-*/
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainJuegoDelSiete {
@@ -27,7 +19,7 @@ public class MainJuegoDelSiete {
 
       if (apuesta > 0 && apuesta <= jugador.getSaldo()) {
         baraja.barajar();
-        jugador.reiniciarMano();
+        jugador.resetearMano();
         jugador.realizarApuesta(apuesta);
 
         // Turno del jugador
@@ -35,39 +27,39 @@ public class MainJuegoDelSiete {
           Carta carta = baraja.repartir();
           jugador.recibirCarta(carta);
 
-          System.out.println("Tus cartas son: " + Arrays.toString(jugador.getMano().getCartas()));
-          System.out.println("Tu puntuación actual es de: " + jugador.getMano().calcularPuntuacion());
+          jugador.mostrarMano();
+          System.out.println("Tu puntuación actual es de: " + jugador.getPuntuacion());
           System.out.println("¿Quieres robar otra carta? (SI/NO)");
           String respuesta = scanner.next();
 
-          if (respuesta.equalsIgnoreCase("NO") || jugador.getMano().calcularPuntuacion() >= 7.5) {
+          if (respuesta.equalsIgnoreCase("NO") || jugador.getPuntuacion() >= 7.5) {
             break;
           }
         }
 
         // Turno de la banca
-        Mano manoBanca = new Mano();
-        while (manoBanca.calcularPuntuacion() < 7.5) {
+        double puntuacionBanca = 0;
+        while (puntuacionBanca < 7.5) {
           Carta carta = baraja.repartir();
-          manoBanca.recibirCarta(carta);
+          puntuacionBanca += carta.getPuntuacion();
         }
 
         // Determinar ganador
-        double puntuacionJugador = jugador.getMano().calcularPuntuacion();
-        double puntuacionBanca = manoBanca.calcularPuntuacion();
+        double puntuacionJugador = jugador.getPuntuacion();
 
         System.out.println("Puntuación del jugador: " + puntuacionJugador);
         System.out.println("Puntuación de la banca: " + puntuacionBanca);
 
         if (puntuacionJugador > 7.5 || (puntuacionBanca <= 7.5 && puntuacionBanca > puntuacionJugador)) {
           System.out.println("¡Has perdido! Pierdes " + jugador.getApuesta() + " unidades.");
+          jugador.perderApuesta();
         } else {
           double ganancias = jugador.getApuesta() * 2;
           System.out.println("¡Has ganado! Ganancias: " + ganancias + " unidades.");
           jugador.incrementarSaldo(ganancias);
         }
 
-        jugador.reiniciarMano();
+        jugador.resetearMano();
 
         // Preguntar si quiere seguir jugando
         System.out.print("¿Quieres seguir jugando? (S/N): ");

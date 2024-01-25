@@ -1,60 +1,82 @@
 /**
- * Código de la clase Jugador, que contiene las funciones de recibir una carta,
- * realizar apuestas y modificar su saldo solo para incrementarlo, además, es
- * capaz de reiniciar su mano.
+ * Clase Jugador que se encarga de la logica de las apuestas y cartas.
  * 
  * @author Adrián Jiménez Santiago
  */
 
-class Jugador {
-
-  // ATRIBUTOS
-  private Mano mano;
+public class Jugador {
+  private Carta[] mano;
+  private int contadorCartas;
   private double saldo;
   private double apuesta;
 
-  // CONSTRUCTOR
   public Jugador(double saldoInicial) {
-    mano = new Mano();
+    mano = new Carta[40]; // Un tamaño suficientemente grande para evitar quedarse sin espacio
+    contadorCartas = 0;
     saldo = saldoInicial;
-    apuesta = 0;
   }
 
-  // MÉTODOS
   public void recibirCarta(Carta carta) {
-    mano.recibirCarta(carta);
+    if (contadorCartas < mano.length) {
+      mano[contadorCartas++] = carta;
+    }
   }
 
-  public double realizarApuesta(double monto) {
-    if (monto <= saldo) {
-      apuesta = monto;
-      saldo -= apuesta;
-      return apuesta;
-    } else {
-      System.out.println("No tienes tanto saldo como para apostar esa cantidad.");
-      return 0;
+  public double getPuntuacion() {
+    double puntuacion = 0;
+    for (int i = 0; i < contadorCartas; i++) {
+      puntuacion += mano[i].getPuntuacion();
     }
+    return puntuacion;
+  }
+
+  public void realizarApuesta(double cantidad) {
+    if (cantidad <= saldo) {
+      apuesta = cantidad;
+      saldo -= cantidad;
+    } else {
+      System.out.println("Apuesta no válida. No tienes suficiente saldo.");
+      apuesta = 0;
+    }
+  }
+
+  public void ganarApuesta() {
+    saldo += apuesta * 2; // El jugador recupera su apuesta y gana una cantidad igual
+  }
+
+  public void perderApuesta() {
+
+  }
+
+  public void resetearMano() {
+    contadorCartas = 0;
+  }
+
+  public double getSaldo() {
+    return saldo;
+  }
+
+  public void setSaldo(double saldo) {
+    this.saldo = saldo;
   }
 
   public void incrementarSaldo(double monto) {
     saldo += monto;
   }
 
-  public void reiniciarMano() {
-    mano.reiniciar();
-    apuesta = 0;
-  }
-
-  // Getters
-  public double getSaldo() {
-    return saldo;
-  }
-
   public double getApuesta() {
     return apuesta;
   }
 
-  public Mano getMano() {
-    return mano;
+  public void setApuesta(double apuesta) {
+    this.apuesta = apuesta;
+  }
+
+  public void mostrarMano() {
+    System.out.print("Tus cartas son: ");
+    for (int i = 0; i < contadorCartas; i++) {
+      System.out.print(mano[i] + " ");
+    }
+    System.out.println();
   }
 }
