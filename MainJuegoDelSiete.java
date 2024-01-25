@@ -1,6 +1,0 @@
-/**
- * MainJuegoDelSiete
- */
-public class MainJuegoDelSiete {
-
-}
