@@ -1,14 +1,27 @@
 import java.util.Scanner;
 
 public class MainJuegoDelSiete {
+
+  // Colores ANSI b(sacados de internete)
+  public static final String ANSI_RESET = "\u001B[0m";
+  public static final String ANSI_BLACK = "\u001B[30m";
+  public static final String ANSI_RED = "\u001B[31m";
+  public static final String ANSI_GREEN = "\u001B[32m";
+  public static final String ANSI_YELLOW = "\u001B[33m";
+  public static final String ANSI_BLUE = "\u001B[34m";
+  public static final String ANSI_PURPLE = "\u001B[35m";
+  public static final String ANSI_CYAN = "\u001B[36m";
+  public static final String ANSI_WHITE = "\u001B[37m";
+  public static final String ANSI_BOLD = "\u001B[1m";
+
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     Baraja baraja = new Baraja();
     Jugador jugador = new Jugador(100.00);
 
     while (true) {
-      System.out.println("########## JUEGO DEL SIETE ##########");
-      System.out.println("Tu saldo actual es de: " + jugador.getSaldo());
+      System.out.println(ANSI_BLUE + ANSI_BOLD + "########## JUEGO DEL SIETE ##########" + ANSI_RESET);
+      System.out.println("Tu saldo actual es de: " + ANSI_GREEN + jugador.getSaldo() + ANSI_RESET);
       System.out.println("¿Cuánto quieres apostar? (Pulse 0 para salir)");
       double apuesta = scanner.nextDouble();
 
@@ -33,6 +46,7 @@ public class MainJuegoDelSiete {
           String respuesta = scanner.next();
 
           if (respuesta.equalsIgnoreCase("NO") || jugador.getPuntuacion() >= 7.5) {
+            System.out.println(ANSI_RED + "Terminando turno...." + ANSI_RESET);
             break;
           }
         }
@@ -51,11 +65,11 @@ public class MainJuegoDelSiete {
         System.out.println("Puntuación de la banca: " + puntuacionBanca);
 
         if (puntuacionJugador > 7.5 || (puntuacionBanca <= 7.5 && puntuacionBanca > puntuacionJugador)) {
-          System.out.println("¡Has perdido! Pierdes " + jugador.getApuesta() + " unidades.");
+          System.out.println(ANSI_RED + "¡Has perdido! Pierdes " + jugador.getApuesta() + " unidades." + ANSI_RESET);
           jugador.perderApuesta();
         } else {
           double ganancias = jugador.getApuesta() * 2;
-          System.out.println("¡Has ganado! Ganancias: " + ganancias + " unidades.");
+          System.out.println(ANSI_GREEN + "¡Has ganado! Ganancias: " + ganancias + " unidades." + ANSI_RESET);
           jugador.incrementarSaldo(ganancias);
         }
 
