@@ -15,6 +15,8 @@ class Carta {
         this.valor = valor;
     }
 
+    // Métodos
+
     public double getPuntuacion() {
         switch (valor) {
             case "1":
@@ -35,8 +37,23 @@ class Carta {
         }
     }
 
+    public String getSimbolo() {
+        switch (palo) {
+            case "Oros":
+                return "🌕";
+            case "Copas":
+                return "🍷";
+            case "Espadas":
+                return "⚔️";
+            case "Bastos":
+                return "🌲";
+            default:
+                return "?";
+        }
+    }
+
     @Override
     public String toString() {
-        return valor + " de " + palo;
+        return valor + " de " + palo + " " + getSimbolo();
     }
 }
