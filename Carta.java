@@ -30,7 +30,7 @@ class Carta {
                 return 0.5;
             default:
                 System.out.println("Valor de carta desconocido: " + valor);
-                return 0; // O podrías lanzar una excepción si prefieres manejarlo así
+                return 0;
         }
     }
 
