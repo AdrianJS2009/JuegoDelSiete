@@ -1,7 +1,8 @@
 /**
- * Carta
- */
-
+ * Clase Carta
+ * 
+ * @author Giovanni Giove
+*/
 class Carta {
     private String palo;
     private String valor;
@@ -24,9 +25,6 @@ class Carta {
             case "Sota":
             case "Caballo":
             case "Rey":
-            case "J": // Para Jota, que asumimos es equivalente a Sota
-            case "Q": // Para Queen, que asumimos es equivalente a Caballo
-            case "K": // Para King, que asumimos es equivalente a Rey
                 return 0.5;
             default:
                 System.out.println("Valor de carta desconocido: " + valor);

@@ -1,8 +1,11 @@
-
 /**
- * Baraja
- */
+ * Explica tu código aquí
+ * 
+ * @author Giovanni Giove
+*/
+
 import java.util.Random;
+import java.util.Scanner;
 
 class Baraja {
     private Carta[] cartas;
