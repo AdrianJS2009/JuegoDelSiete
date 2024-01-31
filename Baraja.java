@@ -20,7 +20,7 @@ class Baraja {
         cartas = new Carta[40];
         index = 0; // usaremos index a la hora de repartir las cartas
 
-        String[] palos = { "Oros", "Copas", "Espadas", "Bastos" };
+        String[] palos = { "Copas", "Bastos", "Oros", "Espadas" };
         String[] valores = { "1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey" };
 
         int i = 0;

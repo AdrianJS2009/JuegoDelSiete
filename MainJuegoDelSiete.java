@@ -12,7 +12,7 @@ public class MainJuegoDelSiete {
 
   public static void main(String[] args) throws InterruptedException { // Agregada excepción de interrupción para hacer
                                                                        // uso del thread.sleep
-    Scanner scanner = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     Baraja baraja = new Baraja();
     Jugador jugador = new Jugador(100.00); // Saldo del jugador
 
@@ -21,7 +21,7 @@ public class MainJuegoDelSiete {
           ANSI_BLUE + ANSI_BOLD + "########## " + ANSI_UNDERLINE + "JUEGO DEL SIETE" + " ##########" + ANSI_RESET);
       System.out.println("Tu saldo actual es de: " + ANSI_GREEN + jugador.getSaldo() + ANSI_RESET);
       System.out.println("¿Cuánto quieres apostar? (" + ANSI_ITALIC + "Pulse 0 para salir" + ANSI_RESET + ")");
-      double apuesta = scanner.nextDouble();
+      double apuesta = sc.nextDouble();
 
       if (apuesta == 0) {
         System.out.println("Gracias por jugar. Tu saldo final es: " + ANSI_GREEN + jugador.getSaldo() + ANSI_RESET);
@@ -42,7 +42,7 @@ public class MainJuegoDelSiete {
           jugador.mostrarMano();
           System.out.println("Tu puntuación actual es de: " + ANSI_GREEN + jugador.getPuntuacion() + ANSI_RESET);
           System.out.println("¿Quieres robar otra carta? (" + ANSI_ITALIC + "SI/NO" + ANSI_RESET + ")");
-          String respuesta = scanner.next();
+          String respuesta = sc.next();
 
           if (respuesta.equalsIgnoreCase("NO") || jugador.getPuntuacion() >= 7.5) {
             System.out.print(ANSI_RED + "Terminando turno" + ANSI_RESET);
@@ -85,7 +85,7 @@ public class MainJuegoDelSiete {
 
         // Preguntar si quiere seguir jugando
         System.out.print("\n¿Quieres seguir jugando? (" + ANSI_ITALIC + "S/N" + ANSI_RESET + "): ");
-        char continuar = scanner.next().charAt(0);
+        char continuar = sc.next().charAt(0);
         if (continuar == 'N' || continuar == 'n') {
           System.out.println("Gracias por jugar. Tu saldo final es: " + ANSI_GREEN + jugador.getSaldo() + ANSI_RESET);
           break;
