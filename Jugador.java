@@ -8,33 +8,25 @@ class Jugador {
 
   // Atributos
 
-  private Carta[] mano;
-  private int contadorCartas;
+  private Mano mano;
   private double saldo;
   private double apuesta;
 
   // Constructor
 
   public Jugador(double saldoInicial) {
-    mano = new Carta[40]; // 40 para asegurarme de que nunca nos quedamos cortos.
-    contadorCartas = 0;
+    mano = new Mano();
     saldo = saldoInicial;
   }
 
   // Métodos
 
   public void recibirCarta(Carta carta) {
-    if (contadorCartas < mano.length) {
-      mano[contadorCartas++] = carta;
-    }
+    mano.agregarCarta(carta);
   }
 
   public double getPuntuacion() {
-    double puntuacion = 0;
-    for (int i = 0; i < contadorCartas; i++) {
-      puntuacion += mano[i].getPuntuacion();
-    }
-    return puntuacion;
+    return mano.getPuntuacion();
   }
 
   public void realizarApuesta(double cantidad) {
@@ -42,8 +34,8 @@ class Jugador {
       apuesta = cantidad;
       saldo -= cantidad;
     } else {
-      System.out.println("Apuesta no válida. No tienes suficientes creditos.");
-      apuesta = 0;
+      System.out.println("No tienes suficiente saldo para realizar esa apuesta");
+
     }
   }
 
@@ -60,7 +52,7 @@ class Jugador {
   }
 
   public void resetearMano() {
-    contadorCartas = 0;
+    mano = new Mano();
   }
 
   public double getSaldo() {
@@ -76,10 +68,7 @@ class Jugador {
   }
 
   public void mostrarMano() {
-    System.out.print("Tus cartas son: ");
-    for (int i = 0; i < contadorCartas; i++) {
-      System.out.print(mano[i] + " ");
-    }
-    System.out.println();
+    mano.mostrarMano();
   }
+
 }
