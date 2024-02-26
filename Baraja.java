@@ -3,6 +3,8 @@
  * Explica tu código aquí
  * 
  * @author Giovanni Giove
+ * 
+ * Adrián se ha encargado de refactorizar el código a ArrayLists.
 */
 
 import java.util.ArrayList;

@@ -7,6 +7,9 @@
 public class Mano {
 
   // Atributos
+
+  // Mantengo el array ya que nos interesa que no se puedan añadir más de 40
+  // cartas
   private Carta[] mano;
   private int contadorCartas;
 
