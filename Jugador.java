@@ -11,12 +11,14 @@ class Jugador {
   private Mano mano;
   private double saldo;
   private double apuesta;
+  private double saldoInicial;
 
   // Constructor
 
   public Jugador(double saldoInicial) {
     mano = new Mano();
     saldo = saldoInicial;
+    this.saldoInicial = saldoInicial;
   }
 
   // Métodos
@@ -37,10 +39,13 @@ class Jugador {
       System.out.println("No tienes suficiente saldo para realizar esa apuesta");
 
     }
+
+    saldoInicial = saldo;
   }
 
   public void ganarApuesta() {
-    saldo += apuesta * 2;
+    saldo = apuesta * 2;
+    saldoInicial = saldo;
   }
 
   public void perderApuesta() {
@@ -69,6 +74,10 @@ class Jugador {
 
   public void mostrarMano() {
     mano.mostrarMano();
+  }
+
+  public double getSaldoInicial() {
+    return saldoInicial;
   }
 
 }

@@ -49,7 +49,7 @@ class Carta {
             case "Bastos":
                 return "🌲";
             default:
-                return "?";
+                return "pruebaprueba";
         }
     }
 

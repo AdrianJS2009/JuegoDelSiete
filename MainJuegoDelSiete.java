@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class MainJuegoDelSiete {
-  // Constantes de colores y formato
+  // Constantes de colores y formato //Gracias GPT
   public static final String ANSI_RESET = "\u001B[0m";
   public static final String ANSI_GREEN = "\u001B[32m";
   public static final String ANSI_RED = "\u001B[31m";
@@ -37,8 +37,6 @@ public class MainJuegoDelSiete {
         while (true) {
           Carta carta = baraja.repartir();
           jugador.recibirCarta(carta);
-
-          System.out.println("Tu mano: ");
           jugador.mostrarMano();
           System.out.println("Tu puntuación actual es de: " + ANSI_GREEN + jugador.getPuntuacion() + ANSI_RESET);
           System.out.println("¿Quieres robar otra carta? (" + ANSI_ITALIC + "SI/NO" + ANSI_RESET + ")");
