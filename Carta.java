@@ -32,8 +32,8 @@ class Carta {
             case "Rey":
                 return 0.5;
             default:
-                System.out.println("El valor de la carta es desconocido: " + valor); // No deberia de entrar aqui nunca,
-                                                                                     // pero por si acaso.
+                System.out.println("El valor de la carta es ¿?: " + valor); // No deberia de entrar aqui nunca,
+                                                                            // pero por si acaso.
                 return 0.0;
         }
     }

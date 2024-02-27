@@ -1,7 +1,14 @@
+
+/** 
+ * Main para la ejecución del juego
+ * 
+* @author Adrián Jiménez Santiago
+*/
+
 import java.util.Scanner;
 
 public class MainJuegoDelSiete {
-  // Constantes de colores y formato //Gracias GPT
+  // Gracias GPT
   public static final String ANSI_RESET = "\u001B[0m";
   public static final String ANSI_GREEN = "\u001B[32m";
   public static final String ANSI_RED = "\u001B[31m";
@@ -10,11 +17,11 @@ public class MainJuegoDelSiete {
   public static final String ANSI_UNDERLINE = "\u001B[4m";
   public static final String ANSI_ITALIC = "\u001B[3m";
 
-  public static void main(String[] args) throws InterruptedException { // Agregada excepción de interrupción para hacer
-                                                                       // uso del thread.sleep
+  public static void main(String[] args) throws InterruptedException { // Excepción para Thread.sleep
+
     Scanner sc = new Scanner(System.in);
     Baraja baraja = new Baraja();
-    Jugador jugador = new Jugador(100.00); // Saldo del jugador
+    Jugador jugador = new Jugador(100.00); // Saldo con el que comienza el player
 
     while (true) {
       System.out.println(

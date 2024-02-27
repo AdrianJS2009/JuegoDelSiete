@@ -27,7 +27,6 @@ public class Mano {
     }
   }
 
-  // Método para obtener la puntuación de la mano
   public double getPuntuacion() {
     double puntuacion = 0;
     for (int i = 0; i < contadorCartas; i++) {
@@ -36,7 +35,6 @@ public class Mano {
     return puntuacion;
   }
 
-  // Método para mostrar la mano
   public void mostrarMano() {
     System.out.print("Tu mano es: ");
     for (int i = 0; i < contadorCartas; i++) {
