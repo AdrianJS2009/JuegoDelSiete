@@ -36,8 +36,8 @@ public class MainJuegoDelSiete {
       }
 
       if (apuesta > 0 && apuesta <= jugador.getSaldo()) {
-        baraja.barajar();
         jugador.resetearMano();
+        baraja.barajar();
         jugador.realizarApuesta(apuesta);
 
         // Turno del jugador
@@ -65,7 +65,7 @@ public class MainJuegoDelSiete {
 
         // Turno de la banca
         double puntuacionBanca = 0;
-        while (puntuacionBanca < 7.5) {
+        while (puntuacionBanca <= 7.5) {
           Carta carta = baraja.repartir();
           puntuacionBanca += carta.getPuntuacion();
         }
@@ -77,13 +77,21 @@ public class MainJuegoDelSiete {
         System.out.println("Puntuación del jugador: " + ANSI_GREEN + puntuacionJugador + ANSI_RESET);
         System.out.println("Puntuación de la banca: " + ANSI_GREEN + puntuacionBanca + ANSI_RESET);
 
-        if (puntuacionJugador > 7.5 || (puntuacionBanca <= 7.5 && puntuacionBanca > puntuacionJugador)) {
+        // Calcular la diferencia entre las puntuaciones y 7.5
+        double diferenciaJugador = Math.abs(puntuacionJugador - 7.5);
+        double diferenciaBanca = Math.abs(puntuacionBanca - 7.5);
+
+        // Escoger ganador
+        if (diferenciaJugador < diferenciaBanca || puntuacionBanca > 7.5) {
+          System.out.println(
+              ANSI_GREEN + "¡Has ganado! Has recibido: " + jugador.getApuesta() + " créditos. 🏆" + ANSI_RESET);
+          jugador.incrementarSaldo(jugador.getApuesta());
+        } else if (diferenciaJugador > diferenciaBanca) {
           System.out.println(ANSI_RED + "¡Has perdido! Pierdes " + jugador.getApuesta() + " créditos. 😞" + ANSI_RESET);
           jugador.perderApuesta();
-        } else {
-          double ganancias = jugador.getApuesta();
-          System.out.println(ANSI_GREEN + "¡Has ganado! Has recibido: " + ganancias + " créditos. 🏆" + ANSI_RESET);
-          jugador.incrementarSaldo(ganancias);
+        } else { // En empate el jugador recupera su apuesta
+          System.out.println("Es un empate. Recuperas tu apuesta. 🤝");
+          jugador.incrementarSaldo(jugador.getApuesta());
         }
 
         jugador.resetearMano();

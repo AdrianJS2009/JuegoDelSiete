@@ -4,7 +4,7 @@
  * 
  * @author Giovanni Giove
  * 
- * Adrián se ha encargado de refactorizar el código a ArrayLists (git reset --hard si queremos volver a la version con Arrays)
+ * Adrián se ha encargado de refactorizar el código a ArrayLists (git reset --hard b6512ce8c9c9027654e312ece55c0b62da6ae251 si queremos volver a la version con Arrays)
 */
 
 import java.util.ArrayList;
