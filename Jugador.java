@@ -28,7 +28,7 @@ class Jugador {
   }
 
   public double getPuntuacion() {
-    return mano.getPuntuacion();
+    return mano.getPuntuacionCarta();
   }
 
   public void realizarApuesta(double cantidad) {
@@ -53,7 +53,6 @@ class Jugador {
     if (saldo < 0) {
       saldo = 0;
     }
-    apuesta = 0;
   }
 
   public void resetearMano() {

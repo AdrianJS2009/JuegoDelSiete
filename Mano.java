@@ -1,5 +1,5 @@
 /**
- * Explica tu código aquí
+ * Clase mano
  * 
  * @author Adrián Jiménez Santiago
  */
@@ -27,10 +27,10 @@ public class Mano {
     }
   }
 
-  public double getPuntuacion() {
+  public double getPuntuacionCarta() {
     double puntuacion = 0;
     for (int i = 0; i < contadorCartas; i++) {
-      puntuacion += mano[i].getPuntuacion();
+      puntuacion += mano[i].getPuntuacion(); // llamamos al getPuntuacion de Carta
     }
     return puntuacion;
   }

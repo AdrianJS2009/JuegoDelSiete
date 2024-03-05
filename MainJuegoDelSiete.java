@@ -8,7 +8,7 @@
 import java.util.Scanner;
 
 public class MainJuegoDelSiete {
-  // Gracias GPT
+  // Gracias GPT por los colores
   public static final String ANSI_RESET = "\u001B[0m";
   public static final String ANSI_GREEN = "\u001B[32m";
   public static final String ANSI_RED = "\u001B[31m";
@@ -21,7 +21,7 @@ public class MainJuegoDelSiete {
 
     Scanner sc = new Scanner(System.in);
     Baraja baraja = new Baraja();
-    Jugador jugador = new Jugador(100.00); // Saldo con el que comienza el player
+    Jugador jugador = new Jugador(100.00); // Saldo con el que comienza el player ¡Double!
 
     while (true) {
       System.out.println(
@@ -81,7 +81,7 @@ public class MainJuegoDelSiete {
           System.out.println(ANSI_RED + "¡Has perdido! Pierdes " + jugador.getApuesta() + " créditos. 😞" + ANSI_RESET);
           jugador.perderApuesta();
         } else {
-          double ganancias = jugador.getApuesta() * 2;
+          double ganancias = jugador.getApuesta();
           System.out.println(ANSI_GREEN + "¡Has ganado! Has recibido: " + ganancias + " créditos. 🏆" + ANSI_RESET);
           jugador.incrementarSaldo(ganancias);
         }
