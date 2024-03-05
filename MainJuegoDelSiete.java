@@ -74,7 +74,7 @@ public class MainJuegoDelSiete {
           System.out.println(
               ANSI_GREEN + "¡Has ganado! Has recibido: " + (2 * jugador.getApuesta()) + " créditos. 🏆" + ANSI_RESET);
           jugador.ganarApuesta();
-        } else {S
+        } else {
           System.out.println(ANSI_RED + "¡Has perdido! Pierdes " + jugador.getApuesta() + " créditos. 😞" + ANSI_RESET);
           jugador.perderApuesta();
         }
