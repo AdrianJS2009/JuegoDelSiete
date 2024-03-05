@@ -44,15 +44,12 @@ class Jugador {
   }
 
   public void ganarApuesta() {
-    saldo = apuesta * 2;
+    saldo += apuesta * 2;
     saldoInicial = saldo;
   }
 
   public void perderApuesta() {
-    saldo -= apuesta;
-    if (saldo < 0) {
-      saldo = 0;
-    }
+    apuesta = 0;
   }
 
   public void resetearMano() {

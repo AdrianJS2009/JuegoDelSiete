@@ -1,14 +1,6 @@
-
-/** 
- * Main para la ejecución del juego
- * 
-* @author Adrián Jiménez Santiago
-*/
-
 import java.util.Scanner;
 
 public class MainJuegoDelSiete {
-  // Gracias GPT por los colores
   public static final String ANSI_RESET = "\u001B[0m";
   public static final String ANSI_GREEN = "\u001B[32m";
   public static final String ANSI_RED = "\u001B[31m";
@@ -17,11 +9,10 @@ public class MainJuegoDelSiete {
   public static final String ANSI_UNDERLINE = "\u001B[4m";
   public static final String ANSI_ITALIC = "\u001B[3m";
 
-  public static void main(String[] args) throws InterruptedException { // Excepción para Thread.sleep
-
+  public static void main(String[] args) throws InterruptedException {
     Scanner sc = new Scanner(System.in);
     Baraja baraja = new Baraja();
-    Jugador jugador = new Jugador(100.00); // Saldo con el que comienza el player ¡Double!
+    Jugador jugador = new Jugador(100.00); // Saldo inicial del jugador
 
     while (true) {
       System.out.println(
@@ -43,22 +34,22 @@ public class MainJuegoDelSiete {
         // Turno del jugador
         while (true) {
           Carta carta = baraja.repartir();
-          jugador.recibirCarta(carta);
-          jugador.mostrarMano();
-          System.out.println("Tu puntuación actual es de: " + ANSI_GREEN + jugador.getPuntuacion() + ANSI_RESET);
-          System.out.println("¿Quieres robar otra carta? (" + ANSI_ITALIC + "SI/NO" + ANSI_RESET + ")");
-          String respuesta = sc.next();
+          if (carta != null) {
+            jugador.recibirCarta(carta);
+            jugador.mostrarMano();
+            System.out.println("Tu puntuación actual es de: " + ANSI_GREEN + jugador.getPuntuacion() + ANSI_RESET);
 
-          if (respuesta.equalsIgnoreCase("NO") || jugador.getPuntuacion() >= 7.5) {
-            System.out.print(ANSI_RED + "Terminando turno" + ANSI_RESET);
-
-            for (int i = 0; i < 3; i++) {
-              Thread.sleep(300); // tiempo de espera entre punto y punto
-              System.out.print(".");
+            if (jugador.getPuntuacion() >= 7.5) {
+              break;
             }
 
-            System.out.print(" ⌛");
-            System.out.println();
+            System.out.println("¿Quieres robar otra carta? (" + ANSI_ITALIC + "SI/NO" + ANSI_RESET + ")");
+            String respuesta = sc.next();
+
+            if (respuesta.equalsIgnoreCase("NO")) {
+              break;
+            }
+          } else {
             break;
           }
         }
@@ -67,31 +58,25 @@ public class MainJuegoDelSiete {
         double puntuacionBanca = 0;
         while (puntuacionBanca <= 7.5) {
           Carta carta = baraja.repartir();
-          puntuacionBanca += carta.getPuntuacion();
+          if (carta != null) {
+            puntuacionBanca += carta.getPuntuacion();
+          } else {
+            break;
+          }
         }
 
-        // Determinar quien ha ganado
-        double puntuacionJugador = jugador.getPuntuacion();
-
+        // Determinar y anunciar el ganador
         System.out.println("\n" + ANSI_UNDERLINE + "--- Resultados ---" + ANSI_RESET);
-        System.out.println("Puntuación del jugador: " + ANSI_GREEN + puntuacionJugador + ANSI_RESET);
+        System.out.println("Puntuación del jugador: " + ANSI_GREEN + jugador.getPuntuacion() + ANSI_RESET);
         System.out.println("Puntuación de la banca: " + ANSI_GREEN + puntuacionBanca + ANSI_RESET);
 
-        // Calcular la diferencia entre las puntuaciones y 7.5
-        double diferenciaJugador = Math.abs(puntuacionJugador - 7.5);
-        double diferenciaBanca = Math.abs(puntuacionBanca - 7.5);
-
-        // Escoger ganador
-        if (diferenciaJugador < diferenciaBanca || puntuacionBanca > 7.5) {
+        if (jugador.getPuntuacion() <= 7.5 && (jugador.getPuntuacion() > puntuacionBanca || puntuacionBanca > 7.5)) {
           System.out.println(
-              ANSI_GREEN + "¡Has ganado! Has recibido: " + jugador.getApuesta() + " créditos. 🏆" + ANSI_RESET);
-          jugador.incrementarSaldo(jugador.getApuesta());
-        } else if (diferenciaJugador > diferenciaBanca) {
+              ANSI_GREEN + "¡Has ganado! Has recibido: " + (2 * jugador.getApuesta()) + " créditos. 🏆" + ANSI_RESET);
+          jugador.ganarApuesta();
+        } else {S
           System.out.println(ANSI_RED + "¡Has perdido! Pierdes " + jugador.getApuesta() + " créditos. 😞" + ANSI_RESET);
           jugador.perderApuesta();
-        } else { // En empate el jugador recupera su apuesta
-          System.out.println("Es un empate. Recuperas tu apuesta. 🤝");
-          jugador.incrementarSaldo(jugador.getApuesta());
         }
 
         jugador.resetearMano();
@@ -108,5 +93,6 @@ public class MainJuegoDelSiete {
             .println(ANSI_RED + "Apuesta no válida. Ingresa un monto entre 1 y " + jugador.getSaldo() + ANSI_RESET);
       }
     }
+    sc.close();
   }
 }
