@@ -18,7 +18,7 @@ public class MainJuegoDelSiete {
       System.out.println(
           ANSI_BLUE + ANSI_BOLD + "########## " + ANSI_UNDERLINE + "JUEGO DEL SIETE" + " ##########" + ANSI_RESET);
       System.out.println("Tu saldo actual es de: " + ANSI_GREEN + jugador.getSaldo() + ANSI_RESET);
-      System.out.println("¿Cuánto quieres apostar? (" + ANSI_ITALIC + "Pulse 0 para salir" + ANSI_RESET + ")");
+      System.out.println("¿Cuánto quieres apostar? (" + ANSI_BOLD + "Pulse 0 para salir" + ANSI_RESET + ")");
       double apuesta = sc.nextDouble();
 
       if (apuesta == 0) {
@@ -40,16 +40,18 @@ public class MainJuegoDelSiete {
             System.out.println("Tu puntuación actual es de: " + ANSI_GREEN + jugador.getPuntuacion() + ANSI_RESET);
 
             if (jugador.getPuntuacion() >= 7.5) {
+              System.out.println(ANSI_RED + "¡Te has pasado de 7.5! Has perdido la apuesta." + ANSI_RESET);
               break;
             }
 
-            System.out.println("¿Quieres robar otra carta? (" + ANSI_ITALIC + "SI/NO" + ANSI_RESET + ")");
+            System.out.println("¿Quieres robar otra carta? (" + ANSI_BOLD + "SI/NO" + ANSI_RESET + ")");
             String respuesta = sc.next();
 
             if (respuesta.equalsIgnoreCase("NO")) {
               break;
             }
           } else {
+            System.out.println("No quedan cartas en la baraja.");
             break;
           }
         }
@@ -61,6 +63,7 @@ public class MainJuegoDelSiete {
           if (carta != null) {
             puntuacionBanca += carta.getPuntuacion();
           } else {
+            System.out.println("No quedan cartas en la baraja.");
             break;
           }
         }
@@ -82,7 +85,7 @@ public class MainJuegoDelSiete {
         jugador.resetearMano();
 
         // Preguntar si quiere seguir jugando
-        System.out.print("\n¿Quieres seguir jugando? (" + ANSI_ITALIC + "S/N" + ANSI_RESET + "): ");
+        System.out.print("\n¿Quieres seguir jugando? (" + ANSI_BOLD + "S/N" + ANSI_RESET + "): ");
         char continuar = sc.next().charAt(0);
         if (continuar == 'N' || continuar == 'n') {
           System.out.println("Gracias por jugar. Tu saldo final es: " + ANSI_GREEN + jugador.getSaldo() + ANSI_RESET);
