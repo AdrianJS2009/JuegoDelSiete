@@ -1,46 +1,53 @@
+
 /**
- * Baraja
- */
-import java.util.Arrays;
-import java.util.Random;
+ * Explica tu código aquí
+ * 
+ * @author Giovanni Giove
+ * 
+ * Adrián se ha encargado de refactorizar el código a ArrayLists (git reset --hard b6512ce8c9c9027654e312ece55c0b62da6ae251 si queremos volver a la version con Arrays)
+*/
+
+import java.util.ArrayList;
+import java.util.Collections;
+
 class Baraja {
-  private Carta[] cartas;
-  private int index;
 
-  public Baraja() {
-      cartas = new Carta[40];
-      index = 0;
+    // Atributos
 
-      String[] palos = {"Oros", "Copas", "Espadas", "Bastos"};
-      String[] valores = {"1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey"};
+    private ArrayList<Carta> cartas;
+    private int index;
 
-      int i = 0;
-      for (String palo : palos) {
-          for (String valor : valores) {
-              cartas[i] = new Carta(palo, valor);
-              i++;
-          }
-      }
-  }
+    // Constructor
 
-  public void barajar() {
-      Random rand = new Random();
-      for (int i = cartas.length - 1; i > 0; i--) {
-          int j = rand.nextInt(i + 1);
-          // Intercambio de cartas
-          Carta temp = cartas[i];
-          cartas[i] = cartas[j];
-          cartas[j] = temp;
-      }
-      index = 0; // Reiniciar el índice después de barajar
-  }
+    public Baraja() {
+        cartas = new ArrayList<>();
+        index = 0; // usaremos index a la hora de repartir las cartas
 
-  public Carta repartir() {
-      if (index < cartas.length) {
-          return cartas[index++];
-      } else {
-          System.out.println("No quedan cartas en la baraja.");
-          return null;
-      }
-  }
+        String[] palos = { "Copas", "Bastos", "Oros", "Espadas" };
+        String[] valores = { "1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey" };
+
+        for (String palo : palos) {
+            for (String valor : valores) {
+
+                cartas.add(new Carta(palo, valor));
+            }
+        }
+    }
+
+    // Métodos
+
+    public void barajar() {
+        Collections.shuffle(cartas);
+        index = 0; // Si ponemos indice 0 se reparten las cartas desde el primer objeto
+    }
+
+    public Carta repartir() {
+        if (index < cartas.size()) {
+            return cartas.get(index++);
+        } else {
+            System.out.println("No quedan cartas en la baraja."); // No deberia de ocurrir pero por si acaso.
+
+            return null;
+        }
+    }
 }
