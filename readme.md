@@ -121,4 +121,4 @@ Información del contenido de la baraja[^1].
 
 [^1]: La baraja española consta de 40 cartas divididas en 4 palos.
 
- E = mc^2 
+ $$E = mc^2$$
