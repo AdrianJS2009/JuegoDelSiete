@@ -1,4 +1,3 @@
-
 # Documentación del Proyecto de Juego de Cartas 🎴
 
 ## Índice de Contenidos
@@ -14,20 +13,20 @@
 ---
 
 ## Introducción
-Este proyecto simula un juego de cartas utilizando **Java**. Cada componente del juego está modelado como una clase con responsabilidades claramente definidas.
+Este proyecto simula un juego de cartas utilizando **Java**. Cada componente del juego está modelado como una clase con tareas definidas.
 
 ### Objetivo
-El objetivo de este documento es proporcionar una **visión clara** y *detallada* de la estructura del código.
+El objetivo de este documento es otorgar una ***visión clara*** y *detallada* de la estructura del código.
 
 #### Notas
-> "La claridad es clave en la documentación de código."
+> "La claridad es clave en la documentación"
 
 ---
 
 ## Clases
 
 ### Baraja
-La `Baraja` es una colección de `Carta`s que se pueden barajar y repartir.
+La `Baraja` es una colección de `Carta` que se pueden barajar y repartir.
 
 #### Atributos
 - `ArrayList<Carta> cartas`: Contiene las cartas de la baraja.
@@ -77,7 +76,9 @@ Gestiona las cartas que tiene un jugador en su mano.
 
 #### Métodos
 ```java
-public void agregarCarta(Carta carta) {
+public void agregarCarta(Carta
+
+ carta) {
     // Implementación...
 }
 ```
@@ -121,4 +122,10 @@ Información del contenido de la baraja[^1].
 
 [^1]: La baraja española consta de 40 cartas divididas en 4 palos.
 
- $$E = mc^2$$
+$$E = mc^2$$
+
+![Ejemplo de imagen](https://tienda.oportunidadesindustriales.com/resources/productos/baraja-espanola-de-50-cartas-74-139.jpg)
+
+1. Primer ítem de la lista ordenada
+   - Sublista no ordenada
+     1. Sublista ordenada
