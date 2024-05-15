@@ -1,60 +1,79 @@
 /**
- * Código de la clase Jugador, que contiene las funciones de recibir una carta,
- * realizar apuestas y modificar su saldo solo para incrementarlo, además, es
- * capaz de reiniciar su mano.
+ * Clase de Jugador
  * 
  * @author Adrián Jiménez Santiago
  */
 
 class Jugador {
 
-  // ATRIBUTOS
+  // Atributos
+
   private Mano mano;
   private double saldo;
   private double apuesta;
+  private double saldoInicial;
 
-  // CONSTRUCTOR
+  // Constructor
+
   public Jugador(double saldoInicial) {
     mano = new Mano();
     saldo = saldoInicial;
+    this.saldoInicial = saldoInicial;
+  }
+
+  // Métodos
+
+  public void recibirCarta(Carta carta) {
+    mano.agregarCarta(carta);
+  }
+
+  public double getPuntuacion() {
+    return mano.getPuntuacionCarta();
+  }
+
+  public void realizarApuesta(double cantidad) {
+    if (cantidad <= saldo) {
+      apuesta = cantidad;
+      saldo -= cantidad;
+    } else {
+      System.out.println("No tienes suficiente saldo para realizar esa apuesta");
+
+    }
+
+    saldoInicial = saldo;
+  }
+
+  public void ganarApuesta() {
+    saldo += apuesta * 2;
+    saldoInicial = saldo;
+  }
+
+  public void perderApuesta() {
     apuesta = 0;
   }
 
-  // MÉTODOS
-  public void recibirCarta(Carta carta) {
-    mano.recibirCarta(carta);
+  public void resetearMano() {
+    mano = new Mano();
   }
 
-  public double realizarApuesta(double monto) {
-    if (monto <= saldo) {
-      apuesta = monto;
-      saldo -= apuesta;
-      return apuesta;
-    } else {
-      System.out.println("No tienes tanto saldo como para apostar esa cantidad.");
-      return 0;
-    }
+  public double getSaldo() {
+    return saldo;
   }
 
   public void incrementarSaldo(double monto) {
     saldo += monto;
   }
 
-  public void reiniciarMano() {
-    mano.reiniciar();
-    apuesta = 0;
-  }
-
-  // Getters
-  public double getSaldo() {
-    return saldo;
-  }
-
   public double getApuesta() {
     return apuesta;
   }
 
-  public Mano getMano() {
-    return mano;
+  public void mostrarMano() {
+    mano.mostrarMano();
   }
+
+  public double getSaldoInicial() {
+    return saldoInicial;
+  }
+
 }

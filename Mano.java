@@ -1,48 +1,45 @@
-import java.util.Arrays;
-
 /**
- * Clase Mano que contiene un array de cartas, además, contiene las funciones de
- * recibir cartas, calcular los puntos de la mano y reiniciar la mano entera.
+ * Clase mano
  * 
  * @author Adrián Jiménez Santiago
  */
-class Mano {
 
-  // ATRIBUTOS
-  private Carta[] cartas; // TODO: Según el array de Gio..
-  private int numCartas;
+public class Mano {
 
-  // CONSTRUCTOR
+  // Atributos
+
+  // Mantengo el array ya que nos interesa que no se puedan añadir más de 40
+  // cartas
+  private Carta[] mano;
+  private int contadorCartas;
+
+  // Constructor
   public Mano() {
-    cartas = new Carta[10]; // Como mucho en una mano hay 10 cartas.
-    numCartas = 0;
+    mano = new Carta[40]; // 40 cartas
+    contadorCartas = 0;
   }
 
-  // MÉTODOS
+  // Métodos
 
-  public void recibirCarta(Carta carta) {
-    if (numCartas < 10) {
-      cartas[numCartas++] = carta;
+  public void agregarCarta(Carta carta) {
+    if (contadorCartas < mano.length) {
+      mano[contadorCartas++] = carta;
     }
   }
 
-  public double calcularPuntuacion() {
+  public double getPuntuacionCarta() {
     double puntuacion = 0;
-    for (int i = 0; i < numCartas; i++) {
-      puntuacion += cartas[i].getPuntuacion();
+    for (int i = 0; i < contadorCartas; i++) {
+      puntuacion += mano[i].getPuntuacion(); // llamamos al getPuntuacion de Carta
     }
     return puntuacion;
   }
 
-  public void reiniciar() { // Reiniciamos la mano
-    cartas = new Carta[10];
-    numCartas = 0;
+  public void mostrarMano() {
+    System.out.print("Tu mano es: ");
+    for (int i = 0; i < contadorCartas; i++) {
+      System.out.print(mano[i] + " ");
+    }
+    System.out.println();
   }
-
-  // GETTERS
-  public Carta[] getCartas() {
-    return Arrays.copyOf(cartas, numCartas); // Utilizando copyOf hacemos una copia exacta del array de cartas junto con
-                                             // su número, si Gio la lia con el array, modificaré el método
-  }
-
 }
